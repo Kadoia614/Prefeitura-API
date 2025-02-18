@@ -184,7 +184,7 @@ exports.historyDemandas = async (requestuest, reply) => {
 
     const history = await getHistory(user);
 
-    reply.status(200).send(history);
+    reply.status(200).send({demandas: history});
   } catch (error) {
     reply
       .status(error.status || 500)

@@ -82,7 +82,7 @@ async function routes(fastify, options) {
   );
   fastify.get(
     "/demandas/user/history",
-    demandasGetHistory,
+    
     demandasTi.historyDemandas
   );
   fastify.put(

@@ -346,27 +346,33 @@ const demandasGetHistory = {
         type: "object",
         properties: {
           demandas: {
-            type: "object",
-            example: {
-              id: 3,
-              ramal: "1234",
-              email: "kadoia",
-              setor_id: 1,
-              patrimonio: "teste",
-              description: "teste",
-              prioridade: 2,
-              status: 3,
-              responsavel: 1,
-              createdAt: "2025-02-17T13:06:53.000Z",
-              updatedAt: "2025-02-17T13:06:53.000Z",
-              user: {
-                name: "kadoia",
+            type: "array",
+            example: [
+              {
+                id: 3,
+                patrimonio: "teste",
+                description: "teste",
+                prioridade: 2,
+                status: 3,
+                responsavel: null,
+                createdAt: "2025-02-17T13:06:53.000Z",
+                updatedAt: "2025-02-17T13:06:53.000Z",
+                user: {
+                  name: "kadoia",
+                  ramal: "1234",
+                  email: "kadoia",
+                  setor_id: 1,
+                },
+                setor: {
+                  name: "tecnologia",
+                },
+                responsavel_user: null,
               },
-              setor: {
-                name: "tecnologia",
-              },
-              responsavel_user: "kadoia",
-            },
+            ],
+          },
+          scopo: {
+            type: "string",
+            example: "admin",
           },
         },
       },

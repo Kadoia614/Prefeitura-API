@@ -126,12 +126,61 @@ exports.remove = async (target) => {
 
 exports.getHistory = async (user) => {
   try {
-    let historyDemandas = DBDemandas.findAll({
-      where: {
-        [Op.or]: [{ user_id: user.id }, { responsavel: user.id }],
-        status: 3,
-      },
-    });
+    let historyDemandas;
+    if (user.role === "admin") {
+      historyDemandas = DBDemandas.findAll({
+        where: {
+          status: 3,
+        },
+
+        include: [
+          {
+            model: DBUser,
+            as: "user",
+            attributes: ["name", "id", "ramal", "email"],
+            include: [
+              {
+                model: DBSetor,
+                as: "setor",
+                attributes: ["name"],
+              },
+            ],
+          },
+          {
+            model: DBUser,
+            as: "responsavel_user",
+            attributes: ["name", "id"],
+          },
+        ],
+      });
+    } else {
+      historyDemandas = DBDemandas.findAll({
+        where: {
+          [Op.or]: [{ user_id: user.id }, { responsavel: user.id }],
+          status: 3,
+        },
+
+        include: [
+          {
+            model: DBUser,
+            as: "user",
+            attributes: ["name", "id", "ramal", "email"],
+            include: [
+              {
+                model: DBSetor,
+                as: "setor",
+                attributes: ["name"],
+              },
+            ],
+          },
+          {
+            model: DBUser,
+            as: "responsavel_user",
+            attributes: ["name", "id"],
+          },
+        ],
+      });
+    }
     return historyDemandas;
   } catch (error) {
     throw {
