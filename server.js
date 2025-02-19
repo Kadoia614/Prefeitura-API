@@ -10,7 +10,7 @@ const router = require("./Router/Router");
 const app = fastify();
 
 app.register(fastifyCors, {
-  origin: true, // Permite qualquer origem (ou defina um array de domínios)
+  origin: ["http://192.168.16.80:8000", "http://192.168.16.80:5173"], // Specific allowed origin
   credentials: true, // Permite cookies e cabeçalhos de autenticação
   methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
 });
