@@ -2,13 +2,6 @@ const alterPwdSchema = {
   schema: {
     description: "Alterar senha do usuário, só pode ser alterado pelo mesmmo",
     tags: ["User-Config"],
-    headers: {
-      type: "object",
-      required: ["cookie"],
-      properties: {
-        cookie: { type: "string" },
-      },
-    },
     body: {
       required: ['email', 'oldPass', 'newPass'],
       properties: {
