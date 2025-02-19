@@ -14,8 +14,9 @@ exports.verifyAuth = async (request, repply) => {
       throw { message: "Unauthorized", status: 401 };
     }
 
-    return repply.status(200).send('Usuário authenticado');
+    repply.status(200).send('Usuário authenticado');
+
   } catch (error) {
-    return repply.status(error.status || 401).send(error.message || "Unauthorized");
+    return reply.status(error.status || 500).send({ message: error.message || "Erro interno no servidor", error: error });
   }
 };
