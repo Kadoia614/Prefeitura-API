@@ -37,7 +37,7 @@ exports.login = async (request, reply) => {
 const tokenOptions = {
   httpOnly: false, 
   secure: false, 
-  sameSite: "none",
+  sameSite: "strict",
   token: token,
   maxAge: permanecerConectado ? 3600 : 3600 * 8,
 };
