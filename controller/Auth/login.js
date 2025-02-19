@@ -34,12 +34,13 @@ exports.login = async (request, reply) => {
     
     const token = jwt.sign(tokenPayload, PRIVATE_KEY);
 
-    const tokenOptions = {
-      httpOnly: false, // Vou usar no front também
-      secure: false, // Altere para `true` em produção (HTTPS)
-      sameSite: "none", // Alterar quando entrar em produção
-      token: token,
-    };
+const tokenOptions = {
+  httpOnly: false, 
+  secure: false, 
+  sameSite: "none",
+  token: token,
+  maxAge: permanecerConectado ? 3600 : 3600 * 8,
+};
     
     if (permanecerConectado) {
       reply.cookie("token", token, { ...tokenOptions, maxAge: 3600 });
