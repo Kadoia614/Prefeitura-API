@@ -35,7 +35,7 @@ exports.login = async (request, reply) => {
     const tokenOptions = {
       httpOnly: false, // Vou usar no front também
       secure: false, // Altere para `true` em produção (HTTPS)
-      sameSite: "Strict",
+      sameSite: "none", // Alterar quando entrar em produção
     };
 
     if (permanecerConectado) {
