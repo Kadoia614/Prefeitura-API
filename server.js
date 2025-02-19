@@ -28,7 +28,7 @@ app.register(fastifySwagger, {
     },
     servers: [
       {
-        url: "http://localhost:8000",
+        url: "http://192.168.16.80:8000",
         description: "Development server",
       },
     ],
