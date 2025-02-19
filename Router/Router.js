@@ -5,10 +5,13 @@ const demandasTi = require("../controller/DemandasTi/demandasTiController");
 const login = require("../controller/Auth/login");
 const logout = require("../controller/Auth/logout");
 const alterPwd = require("../controller/UserSttings/alterPwdController");
+const verifyAuth = require('../controller/Auth/VerifyAuth')
 
 const loginSchema = require("../schemas/Auth/loginSchema");
 const logoutSchema = require("../schemas/Auth/logoutSchema");
 const alterPwdSchema = require("../schemas/UserConfig/alterPwdSchema");
+const verifyAuthSchema = require("../schemas/Auth/verifyAuthSchema");
+
 const {
   demandasGetSchema,
   demandasPostSchema,
@@ -64,32 +67,12 @@ async function routes(fastify, options) {
   // 📌 Demandas TI
   fastify.get("/demandas", demandasGetSchema, demandasTi.pegarTodasDemandas);
   fastify.post("/demandas", demandasPostSchema, demandasTi.cadastrarDemandas);
-  fastify.delete(
-    "/demandas/:id",
-    demandasDeleteSchema,
-    demandasTi.deletarDemandas
-  );
-  fastify.put(
-    "/demandas/assumir/:id",
-    assumirDemandasSchema,
-    demandasTi.assumirDemanda
-  );
+  fastify.delete("/demandas/:id", demandasDeleteSchema, demandasTi.deletarDemandas);
+  fastify.put("/demandas/assumir/:id", assumirDemandasSchema, demandasTi.assumirDemanda);
   fastify.get("/demandas/user", getUserDemandas, demandasTi.pegarUserDemandas);
-  fastify.put(
-    "/demandas/user/:id",
-    updateUserDemandas,
-    demandasTi.atualizarDemandas
-  );
-  fastify.get(
-    "/demandas/user/history",
-    
-    demandasTi.historyDemandas
-  );
-  fastify.put(
-    "/demandas/finalizar/:id",
-    finalizarDemandaSchema,
-    demandasTi.finalizarDemanda
-  );
+  fastify.put("/demandas/user/:id", updateUserDemandas, demandasTi.atualizarDemandas);
+  fastify.get("/demandas/user/history", demandasTi.historyDemandas);
+  fastify.put("/demandas/finalizar/:id", finalizarDemandaSchema, demandasTi.finalizarDemanda);
 
   // 📌 Login
   fastify.post("/login", loginSchema, login.login);
@@ -98,6 +81,9 @@ async function routes(fastify, options) {
 
   // 📌 Alterar Senha
   fastify.post("/changePwd", alterPwdSchema, alterPwd.alterPwdController);
+
+  // Verificar Usuário
+  fastify.get("/verifyAuth", verifyAuthSchema, verifyAuth.verifyAuth);
 }
 
 module.exports = routes;

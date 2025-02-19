@@ -16,8 +16,8 @@ const {
 const SERVICE_ID = 4;
 
 //#region /demandas
-exports.pegarTodasDemandas = async (requestuest, reply) => {
-  const token = requestuest.cookies.token;
+exports.pegarTodasDemandas = async (request, reply) => {
+  const token = request.cookies.token;
 
   try {
     const user = await verifyToken(token);

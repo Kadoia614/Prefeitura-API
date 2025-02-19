@@ -31,19 +31,20 @@ exports.login = async (request, reply) => {
       name: user.name,
       role: user.role,
     };
+    
+    const token = jwt.sign(tokenPayload, PRIVATE_KEY);
 
     const tokenOptions = {
       httpOnly: false, // Vou usar no front também
       secure: false, // Altere para `true` em produção (HTTPS)
       sameSite: "none", // Alterar quando entrar em produção
+      token: token,
     };
-
+    
     if (permanecerConectado) {
-      const token = jwt.sign(tokenPayload, PRIVATE_KEY);
-      reply.cookie("token", token, { ...tokenOptions, maxAge: 2400000 });
+      reply.cookie("token", token, { ...tokenOptions, maxAge: 3600 });
     } else {
-      const token = jwt.sign({ ...tokenPayload, exp: Math.floor(Date.now() / 1000) + 60 * 60 }, PRIVATE_KEY);
-      reply.cookie("token", token, { ...tokenOptions, maxAge: 1200000 });
+      reply.cookie("token", token, { ...tokenOptions, maxAge: 3600 * 8 });
     }
 
     reply.status(200).send({
