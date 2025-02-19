@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { PRIVATE_KEY } = require("../../middleware/auth");
-const { z } = require("zod"); // Importação correta do Zod
+
 
 const DBUser = require("../../db/model/UserModel");
 const bcrypt = require("bcryptjs"); // Para comparação de senha criptografada
