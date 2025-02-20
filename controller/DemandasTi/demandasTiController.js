@@ -184,7 +184,7 @@ exports.historyDemandas = async (requestuest, reply) => {
 
     const history = await getHistory(user);
 
-    reply.status(200).send({demandas: history});
+    reply.status(200).send({demandasHistory: history});
   } catch (error) {
     reply
       .status(error.status || 500)
@@ -206,7 +206,7 @@ exports.pegarUserDemandas = async (requestuest, reply) => {
 
     const message = await getUserDemanda(user);
 
-    reply.status(200).send({ demandas: message.userDemandas, scopo: message.scopo });
+    reply.status(200).send({ userDemandas: message.userDemandas, scopo: message.scopo });
   } catch (error) {
     reply
       .status(error.status || 500)

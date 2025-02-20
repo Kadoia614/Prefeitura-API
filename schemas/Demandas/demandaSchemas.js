@@ -117,7 +117,7 @@ const getUserDemandas = {
         description: "Requisição bem sucedida",
         type: "object",
         properties: {
-          demandas: {
+          userDemandas: {
             type: "array",
             example: [
               {
@@ -345,7 +345,7 @@ const demandasGetHistory = {
         description: "Requisição bem sucedida",
         type: "object",
         properties: {
-          demandas: {
+          demandasHistory: {
             type: "array",
             example: [
               {
