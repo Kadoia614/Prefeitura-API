@@ -6,6 +6,12 @@ insert into Services (name, description, url) values ('Painel Admin', 'Gerencie 
 
 insert into Services (name, description, url) values ('Painel Services', 'Gerencie seus Serviços', '/admin/service');
 
+insert into Services (name, description, url) values ('Demandas Ti', 'Demandas do Ti', '/demandasti');
+
+insert into Services (name, description, url) values ('Setores', 'Gerenciamento de setores', '/setor');
+
+insert into Services (name, description, url) values ('Demandas Ti', 'Demandas do Ti', '/demandasti');
+
 insert into Permissions (user_id, service_id, active) values ('1', '1', true);
 
 insert into Permissions (user_id, service_id, active) values ('1', '2', true);
