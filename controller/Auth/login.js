@@ -39,13 +39,13 @@ const tokenOptions = {
   secure: false, 
   sameSite: "strict",
   token: token,
-  maxAge: permanecerConectado ? 3600 : 3600 * 8,
+  maxAge: permanecerConectado ? 3600 * 8 : 3600,
 };
     
     if (permanecerConectado) {
-      reply.cookie("token", token, { ...tokenOptions, maxAge: 3600 });
-    } else {
       reply.cookie("token", token, { ...tokenOptions, maxAge: 3600 * 8 });
+    } else {
+      reply.cookie("token", token, { ...tokenOptions, maxAge: 3600});
     }
 
     reply.status(200).send({
