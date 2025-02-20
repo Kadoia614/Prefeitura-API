@@ -10,6 +10,7 @@ exports.verifyAuth = async (request, repply) => {
         id: user.id,
       },
     });
+    
     if (!verifyUser) {
       throw { message: "Unauthorized", status: 401 };
     }

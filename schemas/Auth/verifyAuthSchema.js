@@ -17,6 +17,13 @@ const verifyAuthSchema = {
             message: { type: "string", example: "Não autorizado" },
           },
         },
+        500: {
+          description: "Erro interno",
+          type: "object",
+          properties: {
+            message: { type: "string", example: "Erro interno" },
+          },
+        },
       },
     },
   };

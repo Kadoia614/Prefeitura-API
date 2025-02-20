@@ -35,7 +35,7 @@ exports.login = async (request, reply) => {
     const token = jwt.sign(tokenPayload, PRIVATE_KEY);
 
 const tokenOptions = {
-  httpOnly: false, 
+  httpOnly: true, 
   secure: false, 
   sameSite: "strict",
   token: token,

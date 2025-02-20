@@ -2,9 +2,9 @@ insert into Setors (name, description) values ('tecnologia', 'Setor do TI, volta
 
 insert into Users (name, email, ramal, password, setor_id, role, firstLogin) values ('kadoia', 'kadoia', '1234', 'kadoia', 1, 'admin', true);
 
-insert into Services (name, description, url) values ('Painel Admin', 'Gerencie seus Usuários', '/');
+insert into Services (name, description, url) values ('Painel Admin', 'Gerencie seus Usuários', '/admin');
 
-insert into Services (name, description, url) values ('Painel Services', 'Gerencie seus Serviços', 'service');
+insert into Services (name, description, url) values ('Painel Services', 'Gerencie seus Serviços', '/admin/service');
 
 insert into Permissions (user_id, service_id, active) values ('1', '1', true);
 
